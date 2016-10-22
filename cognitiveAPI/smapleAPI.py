@@ -1,15 +1,5 @@
 ########### Python 2.7 #############
-import httplib, urllib, base64
-
-headers = {
-    # Request headers
-    'Content-Type': 'application/json',
-    'Ocp-Apim-Subscription-Key': '770f02c81d39406ba202e374f313d76c'
-}
-
-params = urllib.urlencode({
-
-})
+import httplib, urllib, base64,os
 
 body='''
 {
@@ -17,6 +7,23 @@ body='''
 }
 '''
 
+def key(self):
+    # path = os.path.abspath('/home/jimze/db.txt')
+    path = os.path.abspath('d:/emotion_key.txt')
+    dbFile = open(path)
+    key = dbFile.readlines()
+    return key
+
+
+headers = {
+    # Request headers
+    'Content-Type': 'application/json',
+    'Ocp-Apim-Subscription-Key': key()
+}
+
+params = urllib.urlencode({
+
+})
 
 
 try:
